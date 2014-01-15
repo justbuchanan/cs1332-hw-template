@@ -1,0 +1,25 @@
+
+# Replace this with your main class name
+DRIVER=MyJavaClassWithMainMethod
+
+# Use all .java files in the directory
+SRC=$(wildcard *.java)
+OBJ=$(patsubst %.java, %.class, $(SRC))
+
+# This list of files are included in the pkg.zip output
+# If you want to upload more than just the .java files, add them here
+PKG_FILES=$(SRC)
+
+all: $(OBJ)
+
+run: all
+	java $(DRIVER)
+
+pkg: $(PKG_FILES)
+	zip pkg.zip $(PKG_FILES)
+
+%.class: %.java
+	javac $^
+
+clean:
+	rm $(OBJ) pkg.zip
