@@ -5,7 +5,7 @@ DRIVER=MyJavaClassWithMainMethod
 SRC=$(wildcard *.java)
 OBJ=$(patsubst %.java, %.class, $(SRC))
 
-# This list of files are included in the pkg.zip output for uploading to T-Square
+# This list of files is included in the pkg.zip output for uploading to T-Square
 # If you want to upload more than just the .java files, add them here
 PKG_FILES=$(SRC)
 
