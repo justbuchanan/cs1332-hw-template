@@ -1,6 +1,9 @@
 # Replace this with your main class name
 DRIVER=MyJavaClassWithMainMethod
 
+# Replace this with the class that contains all of your tests
+TEST_CLASS=MyTestClass
+
 # Use all .java files in the directory
 SRC=$(wildcard *.java)
 OBJ=$(patsubst %.java, %.class, $(SRC))
@@ -9,19 +12,26 @@ OBJ=$(patsubst %.java, %.class, $(SRC))
 # If you want to upload more than just the .java files, add them here
 PKG_FILES=$(SRC)
 
+# class path
+# note: you may need to add the path to junit.jar here
+CLASSPATH="."
+
 all: $(OBJ)
 
 run: all
-	java $(DRIVER)
+	java -cp $(CLASSPATH) $(DRIVER)
 
 debug: all
-	jdb $(DRIVER)
+	jdb -cp $(CLASSPATH) $(DRIVER)
+
+test: all
+	java -cp $(CLASSPATH) org.junit.runner.JUnitCore $(TEST_CLASS)
 
 pkg: $(PKG_FILES)
 	zip pkg.zip $(PKG_FILES)
 
 %.class: %.java
-	javac $^
+	javac -cp $(CLASSPATH) $^
 
 clean:
 	rm $(OBJ) pkg.zip
