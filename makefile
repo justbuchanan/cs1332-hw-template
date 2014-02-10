@@ -27,6 +27,9 @@ debug: all
 test: all
 	java -cp $(CLASSPATH) org.junit.runner.JUnitCore $(TEST_CLASS)
 
+checkstyle: all
+	java -jar CheckStyle/checkstyle.jar -c CheckStyle/CS1332-checkstyle.xml $(SRC)
+
 pkg: $(PKG_FILES)
 	zip pkg.zip $(PKG_FILES)
 
