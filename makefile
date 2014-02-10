@@ -14,7 +14,7 @@ PKG_FILES=$(SRC)
 
 # class path
 # note: you may need to add the path to junit.jar here
-CLASSPATH="."
+CLASSPATH="junit-4.11.jar:hamcrest-core-1.3.jar:."
 
 all: $(OBJ)
 
