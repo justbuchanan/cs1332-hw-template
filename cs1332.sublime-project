@@ -5,5 +5,19 @@
 			"follow_symlinks": true,
 			"path": "."
 		}	
+	],
+	
+	"build_systems":
+	[
+		{
+			"name": "Make / Make run",
+			"cmd": ["make", "run"],
+			"working_dir": "${project_path}"
+		},
+		{
+			"name": "Make / Make test",
+			"cmd": ["make", "test"],
+			"working_dir": "${project_path}"
+		}
 	]
 }
